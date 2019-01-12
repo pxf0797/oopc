@@ -26,17 +26,17 @@ class cTemplate:
                       '@date':':'+__timeFormatFull,
                       '@brief':':',
                       '@others':':',
-                      '@history':':'+__timeFormatShort+' pxf 初建立',
-    }
-    __fileComments2 = {'Copyright': ': Copyright(C), 2019, pxf, person.',
+                      '@history':':'+__timeFormatShort+' pxf 初次建立',
+    }# 私有变量
+    fileComments2 = {'Copyright': ': Copyright(C), 2019, pxf, person.',
                       'File name':': ',
                       'Author':': pxf',
                       'Version':': v1.0',
                       'Created on':': '+__timeFormatFull,
                       'Description':': ',
                       'Others':': ',
-                      'History':': '+__timeFormatShort+' pxf 初建立',
-    }
+                      'History':': '+__timeFormatShort+' pxf 初次建立',
+    }# 块变量
     __functionComments = {'@function':':',
                       '@description':':',
                       '@input':':',
@@ -45,7 +45,7 @@ class cTemplate:
                       '@calledBy':':',
                       '@others':':',
     }
-    __functionComments2 = {'名称':': 无',
+    functionComments2 = {'名称':': 无',
                       '输入':': 无',
                       '输出':': 无',
                       '其他':': 无',
@@ -102,7 +102,7 @@ class cTemplate:
     def generateFileHeadComment2(self,name):
         """生成文件头注释"""
         #set filename for every file generate
-        self.__fileComments2['File name'] = ': '+name
+        self.fileComments2['File name'] = ': '+name
         comments = ('/**************************************************************************\n')
         #find max length of string
         maxLen = 0
@@ -113,7 +113,7 @@ class cTemplate:
         for k in self.__fCommentsOrder2:
             alignSpaceAmount = maxLen - len(k) + 2
             alignSpace = alignSpaceAmount * ' '
-            comments += ('* '+ k + alignSpace + self.__fileComments2[k] + '\n')
+            comments += ('* '+ k + alignSpace + self.fileComments2[k] + '\n')
         comments += ('***************************************************************************/\n\n')
         return comments
 
@@ -142,10 +142,10 @@ class cTemplate:
     def generateFunctionComment2(self,name,input,output,others):
         """生成函数头注释类型2"""
         #set function name for every function generate
-        self.__functionComments2['名称'] = ': '+name
-        self.__functionComments2['输入'] = ': '+input
-        self.__functionComments2['输出'] = ': '+output
-        self.__functionComments2['其他'] = ': '+others
+        self.functionComments2['名称'] = ': '+name
+        self.functionComments2['输入'] = ': '+input
+        self.functionComments2['输出'] = ': '+output
+        self.functionComments2['其他'] = ': '+others
         comments = ('')
         #find max length of string
         maxLen = 0
@@ -157,9 +157,9 @@ class cTemplate:
             alignSpaceAmount = maxLen - len(k) + 1
             alignSpace = alignSpaceAmount * ' '
             if(k == '名称'):
-                comments += ('/*'+ k + alignSpace + self.__functionComments2[k] + '\n')
+                comments += ('/*'+ k + alignSpace + self.functionComments2[k] + '\n')
             else:
-                comments += ('* '+ k + alignSpace + self.__functionComments2[k] + '\n')
+                comments += ('* '+ k + alignSpace + self.functionComments2[k] + '\n')
         comments += ('***********************************************/\n')
         return comments
     #========================================================
@@ -172,7 +172,8 @@ class cTemplate:
         """生成源文件"""
         fh = open(self.__sourceName,mode = 'w',encoding=self.__encoding)
         cm = self.generateFileHeadComment2(self.__sourceName)
-        cm += ("#include \"%s\"\n" %self.__headerName) 
+        cm += ("/*头文件包含*/\n")
+        cm += ("#include \"./%s\"\n" %self.__headerName) 
         cm += ("\n"*1)
         cm += self.generateFunctionComment2(self.__fileName+'()','无','无','无')
         cm += ("void %s(void){\n}\n" %self.__fileName)
@@ -187,6 +188,8 @@ class cTemplate:
         cm = self.generateFileHeadComment2(self.__headerName)
         cm += "#ifndef %s_H_\n" %self.__fileName.upper()
         cm += "#define %s_H_\n" %self.__fileName.upper()
+        cm += ("\n"*1)
+        cm += ("/*头文件包含*/\n")
         cm += ("\n"*1)
         cm += self.generateFunctionComment2(self.__fileName+'()','无','无','无')
         cm += ("void %s(void);\n" %self.__fileName)

@@ -3,15 +3,16 @@
 * File name    : My.h
 * Author       : pxf
 * Version      : v1.0
-* Created on   : 2019/01/12 21:28:37
+* Created on   : 2019/01/12 22:44:39
 * Description  : 
 * Others       : 
-* History      : 190112 pxf 初建立
+* History      : 190112 pxf 初次建立
 ***************************************************************************/
 
 #ifndef MY_H_
 #define MY_H_
 
+/*头文件包含*/
 #include "../../oopc_v1.02/oopc.h"
 
 /***********************************************************

@@ -29,7 +29,8 @@ class classTemplate:
 
         主要功能：
         1.生成文件名称
-        2.生成文件路径"""
+        2.生成文件路径
+        3.生成函数列表"""
         if sys_args[1] != '/' and sys_args[1] != '\\':
             self.__filePath = sys_args[1]
         else:
@@ -39,7 +40,6 @@ class classTemplate:
         self.__headerName = sys_args[2] + '.h'
         self.__func_list = sys_args[3:]
         self.__cTemp = cTemplate.cTemplate(sys_args[0:3])
-
         
     #========================================================
     # 类专用生成函数
@@ -85,6 +85,7 @@ class classTemplate:
         """生成源文件"""
         fh = open(self.__sourceName,mode = 'w',encoding=self.__encoding)
         cm = self.__cTemp.generateFileHeadComment2(self.__sourceName)
+        cm += ("/*头文件包含*/\n")
         cm += ("#include \"%s\"\n" %self.__headerName) 
         cm += ("\n"*1)
         cm += ('/***********************************************************\n')
@@ -121,7 +122,7 @@ class classTemplate:
         cm = self.__cTemp.generateFileHeadComment2(self.__headerName)
         cm += "#ifndef %s_H_\n" %self.__fileName.upper()
         cm += "#define %s_H_\n" %self.__fileName.upper()
-        cm += ("\n"*1)
+        cm += ("\n/*头文件包含*/\n")
         if self.__filePath != '':
             refPath = '../'*len(self.__filePath.split('/'))
         else:
