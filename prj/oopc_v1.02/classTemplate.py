@@ -84,9 +84,10 @@ class classTemplate:
     def createSource(self):
         """生成源文件"""
         fh = open(self.__sourceName,mode = 'w',encoding=self.__encoding)
+        self.__cTemp.fileComments2['Description'] = ': '+self.__fileName+'类各功能函数定义源文件'
         cm = self.__cTemp.generateFileHeadComment2(self.__sourceName)
         cm += ("/*头文件包含*/\n")
-        cm += ("#include \"%s\"\n" %self.__headerName) 
+        cm += ("#include \"./%s\"\n" %self.__headerName) 
         cm += ("\n"*1)
         cm += ('/***********************************************************\n')
         cm += ('* %s类定义\n' %self.__fileName)
@@ -119,6 +120,7 @@ class classTemplate:
     def createHeader(self):
         """生成头文件"""
         fh = open(self.__headerName,mode = 'w',encoding=self.__encoding)
+        self.__cTemp.fileComments2['Description'] = ': '+self.__fileName+'类及接口声明头文件'
         cm = self.__cTemp.generateFileHeadComment2(self.__headerName)
         cm += "#ifndef %s_H_\n" %self.__fileName.upper()
         cm += "#define %s_H_\n" %self.__fileName.upper()

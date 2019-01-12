@@ -3,8 +3,8 @@
 * File name    : My.h
 * Author       : pxf
 * Version      : v1.0
-* Created on   : 2019/01/12 22:44:39
-* Description  : 
+* Created on   : 2019/01/12 23:04:08
+* Description  : My类及接口声明头文件
 * Others       : 
 * History      : 190112 pxf 初次建立
 ***************************************************************************/
