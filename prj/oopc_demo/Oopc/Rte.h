@@ -1,7 +1,7 @@
 /*
  * Rte.h
  *
- *  Created on: 2018Äê2ÔÂ8ÈÕ
+ *  Created on: 2018ï¿½ï¿½2ï¿½ï¿½8ï¿½ï¿½
  *      Author: pxf
  */
 
@@ -15,10 +15,10 @@
 
 #include "UniDataTypes.h"
 //#include ".\oopc\oopc.h"
-#include ".\oopc_v1.0\oopc.h"
+#include "./oopc_v1.0/oopc.h"
 
-#include ".\class_abstract_interface\cla_abs_inf.h"
-#include ".\class_class\cla_cla.h"
+#include "./class_abstract_interface/cla_abs_inf.h"
+#include "./class_class/cla_cla.h"
 void ClaAbsInfTest(void);
 void ClaClaTest(void);
 

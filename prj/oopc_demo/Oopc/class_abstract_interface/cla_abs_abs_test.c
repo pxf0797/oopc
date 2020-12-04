@@ -1,17 +1,17 @@
 /*
  * cla_abs_abs_test.c
  *
- *  Created on: 2018Äê2ÔÂ8ÈÕ
+ *  Created on: 2018ï¿½ï¿½2ï¿½ï¿½8ï¿½ï¿½
  *      Author: pxf
  */
 
-#include "..\Rte.h"
+#include "../Rte.h"
 
 
 void ClaAbsInfTest(void)
 {
 	Ccc ClassAbs;
-	// ½¨Á¢ÀàÊµÀý
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 	CN(Ccc, &ClassAbs,
 			Ccc_Aaa_InfFun2,
 			Ccc_Bbb_AbsFun, Ccc_Bbb_AbsFun2,
@@ -25,14 +25,14 @@ void ClaAbsInfTest(void)
 		;
 	}
 
-	// ¶ÔÓ¦Àà²Ù×÷
+	// ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½
 	ClassAbs.Aaa.InfFun2(&ClassAbs.Aaa);
 	ClassAbs.Bbb.AbsFun();
 	ClassAbs.Bbb.AbsFun2(&ClassAbs.Bbb);
 	ClassAbs.ClaFun();
 	ClassAbs.ClaFun2(ClassAbs.self);
 
-	// ÊÍ·ÅÀà×ÊÔ´
+	// ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½Ô´
 	CF(Ccc, ClassAbs.self);
 	if (OOPC_NULL != OPRS(ClassAbs))
 	{

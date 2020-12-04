@@ -1,11 +1,11 @@
 /*
  * cla_cla_test.c
  *
- *  Created on: 2018Äê2ÔÂ8ÈÕ
+ *  Created on: 2018ï¿½ï¿½2ï¿½ï¿½8ï¿½ï¿½
  *      Author: pxf
  */
 
-#include "..\Rte.h"
+#include "../Rte.h"
 
 void ClaClaTest(void)
 {
